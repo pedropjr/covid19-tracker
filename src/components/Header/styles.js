@@ -9,6 +9,10 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 20px 25px;
 
+  div {
+    flex: 1;
+  }
+
   @media only screen and (max-width: 550px) {
     align-items: flex-start;
   }
@@ -35,6 +39,7 @@ export const Middle = styled.div`
 export const Right = styled.div`
   display: grid;
   grid-template-columns: repeat(3, auto);
+  justify-content: flex-end;
 
   @media only screen and (max-width: 550px) {
     grid-template-columns: repeat(1, auto);
@@ -46,6 +51,9 @@ export const Right = styled.div`
 
     & + span {
       padding-left: 25px;
+    }
+
+    @media only screen and (max-width: 550px) {
     }
   }
 `;
