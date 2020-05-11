@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { MdReorder } from 'react-icons/md';
 
 import logo from '~/assets/logo.svg';
-import { Container, Left, Middle, Right } from './styles';
+import { Container, Left, Middle, Right, NavLinkCustom } from './styles';
 
 function Header() {
   const [windowSize, setWindowSize] = useState(undefined);
@@ -28,14 +28,13 @@ function Header() {
         <span>COVID-19 Tracker</span>
         <img src={logo} alt="logo" />
       </Middle>
-
-      {windowSize <= 550 ? (
+      {windowSize <= 800 ? (
         <MdReorder size={48} color="#fff" />
       ) : (
         <Right>
-          <span>brasil</span>
-          <span>mundo</span>
-          <span>sobre</span>
+          <NavLinkCustom to="/brasil">brasil</NavLinkCustom>
+          <NavLinkCustom to="/mundo">mundo</NavLinkCustom>
+          <NavLinkCustom to="/sobre">sobre</NavLinkCustom>
         </Right>
       )}
     </Container>

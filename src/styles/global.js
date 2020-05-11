@@ -19,7 +19,7 @@ export default createGlobalStyle`
 		-webkit-font-smoothing: antialiased;
 	}
 	body, input, button {
-		font: 14px 'Rationale', sans-serif;
+		font: 24px 'Rationale', sans-serif;
   }
 
 	a {
