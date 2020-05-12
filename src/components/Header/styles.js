@@ -48,17 +48,21 @@ export const Middle = styled.div`
     width: 48px;
   }
 
-  @media only screen and (max-width: 400px) {
-    padding-left: 50px;
-    span {
-      display: none;
-    }
-  }
-
   @media only screen and (max-width: 535px) {
     flex-direction: row;
     white-space: nowrap;
   }
+
+  @media only screen and (max-width: 400px) {
+    span {
+      font-size: 30px;
+    }
+  }
+`;
+
+export const Button = styled.button`
+  background: none;
+  border: 0;
 `;
 
 export const Right = styled.div`

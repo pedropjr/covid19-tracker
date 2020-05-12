@@ -1,12 +1,21 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 import { MdReorder } from 'react-icons/md';
+import Menu from '~/components/Menu';
 
 import logo from '~/assets/logo.svg';
-import { Container, Left, Middle, Right, NavLinkCustom } from './styles';
+import {
+  Container,
+  Left,
+  Middle,
+  Button,
+  Right,
+  NavLinkCustom,
+} from './styles';
 
 function Header() {
   const [windowSize, setWindowSize] = useState(undefined);
+  const [menuVisibility, setMenuVisibility] = useState(false);
 
   function handleWindowSize() {
     // add breakpoints
@@ -21,6 +30,10 @@ function Header() {
     window.addEventListener('resize', handleWindowSize);
   }, []);
 
+  function handleMenuVisibility() {
+    setMenuVisibility(!menuVisibility);
+  }
+
   return (
     <Container>
       <Left />
@@ -29,7 +42,9 @@ function Header() {
         <img src={logo} alt="logo" />
       </Middle>
       {windowSize <= 800 ? (
-        <MdReorder size={48} color="#fff" />
+        <Button onClick={handleMenuVisibility}>
+          <MdReorder size={48} color={menuVisibility ? '#4FFA7B' : '#ffff'} />
+        </Button>
       ) : (
         <Right>
           <NavLinkCustom to="/brasil">brasil</NavLinkCustom>
@@ -37,6 +52,10 @@ function Header() {
           <NavLinkCustom to="/sobre">sobre</NavLinkCustom>
         </Right>
       )}
+      <Menu
+        isVisible={menuVisibility}
+        handleMenuVisibility={handleMenuVisibility}
+      />
     </Container>
   );
 }
