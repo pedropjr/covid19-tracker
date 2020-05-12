@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactLoading from 'react-loading';
 
+/** */
+
 import CountryCard from '~/components/CountryCard';
 import api from '~/services/api';
 
