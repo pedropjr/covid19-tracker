@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   padding: 50px 200px;
 
   @media only screen and (max-width: 1100px) {

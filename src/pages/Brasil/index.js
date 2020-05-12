@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import ReactLoading from 'react-loading';
 
 import api from '~/services/api';
 
@@ -11,6 +12,7 @@ import CountryCard from '~/components/CountryCard';
 export default function Brasil() {
   const [countryData, setCountryData] = useState([]);
   const [lastUpdate, setLastUpdate] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function loadCountryData() {
@@ -29,15 +31,26 @@ export default function Brasil() {
       );
       setLastUpdate(formatedDate);
     }
-
+    setLoading(true);
     loadCountryData();
     loadLastUpdate();
+    setLoading(false);
   }, []);
 
   return (
     <Container>
-      <CountryCard showFlag countryData={countryData} lastUpdate={lastUpdate} />
-      <BrasilTable />
+      {loading ? (
+        <ReactLoading type="spokes" color="#4FFA7B" height="10%" width="10%" />
+      ) : (
+        <>
+          <CountryCard
+            showFlag
+            countryData={countryData}
+            lastUpdate={lastUpdate}
+          />
+          <BrasilTable />
+        </>
+      )}
     </Container>
   );
 }

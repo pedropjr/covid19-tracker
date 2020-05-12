@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: grid;
+  display: ${(props) => (props.loading ? 'flex' : 'grid')};
+  justify-content: center;
+
   grid-template-columns: repeat(4, auto);
   grid-gap: 20px;
   padding: 50px;
