@@ -7,6 +7,7 @@ export const Container = styled.div`
   grid-template-columns: repeat(4, auto);
   grid-gap: 20px;
   padding: 50px;
+  color: #fff;
 
   @media only screen and (max-width: 1600px) {
     grid-template-columns: repeat(3, auto);
@@ -17,7 +18,8 @@ export const Container = styled.div`
   }
 
   @media only screen and (max-width: 800px) {
-    grid-template-columns: repeat(1, auto);
+    display: flex;
+    flex-direction: column;
   }
 
   @media only screen and (max-width: 590px) {

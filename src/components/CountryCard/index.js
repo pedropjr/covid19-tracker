@@ -5,6 +5,7 @@ import { FaCircle } from 'react-icons/fa';
 
 import {
   Container,
+  SmallContainer,
   CountryContainer,
   GraphicContainer,
   CasesContainer,
@@ -27,20 +28,25 @@ function CountryCard({ showFlag = false, countryData, lastUpdate }) {
 
   return (
     <Container>
-      <CountryContainer>
-        {showFlag && (
-          <img
-            src="https://www.countryflags.io/br/flat/48.png"
-            alt="country_flag"
+      <SmallContainer>
+        <CountryContainer>
+          {showFlag && (
+            <img
+              src="https://www.countryflags.io/br/flat/48.png"
+              alt="country_flag"
+            />
+          )}
+
+          <span>{countryData.country}</span>
+        </CountryContainer>
+        <GraphicContainer>
+          <Doughnut
+            legend={{ display: false }}
+            data={data}
+            options={{ maintainAspectRatio: false }}
           />
-        )}
-
-        <span>{countryData.country}</span>
-      </CountryContainer>
-      <GraphicContainer>
-        <Doughnut legend={{ display: false }} data={data} />
-      </GraphicContainer>
-
+        </GraphicContainer>
+      </SmallContainer>
       <CasesContainer>
         <Legend>
           <Left>

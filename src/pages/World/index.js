@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactLoading from 'react-loading';
 
 /** */
 
@@ -27,7 +26,7 @@ function World() {
   return (
     <Container loading={loading}>
       {loading ? (
-        <ReactLoading type="spokes" color="#4FFA7B" height="10%" width="10%" />
+        <span>carregando...</span>
       ) : (
         <>
           {countriesData.map((country) => (
