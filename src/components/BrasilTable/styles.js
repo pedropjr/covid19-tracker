@@ -7,7 +7,7 @@ export const Container = styled.div`
   overflow-y: scroll;
 
   @media only screen and (max-height: 820px) {
-    height: 350px;
+    height: 300px;
   }
 
   /* width */
