@@ -8,7 +8,7 @@ import Brasil from '~/pages/Brasil';
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/brasil" component={Brasil} />
+      <Route path="/" component={Brasil} />
     </Switch>
   );
 }
