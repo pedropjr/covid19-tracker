@@ -11,14 +11,11 @@ export const Container = styled.div`
     color: #fff;
   }
 
-  @media only screen and (max-height: 970px) {
-    padding-top: 50px;
+  @media only screen and (max-height: 1100px) {
+    padding-top: 15px;
   }
-`;
 
-export const Update = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 12px;
+  @media only screen and (max-height: 950px) {
+    padding-top: 5px;
+  }
 `;

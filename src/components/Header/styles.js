@@ -79,7 +79,11 @@ export const Right = styled.div`
   }
 `;
 export const NavLinkCustom = styled(NavLink).attrs(() => ({
-  activeStyle: { color: '#4FFA7B' },
+  activeStyle: {
+    color: '#4FFA7B',
+    borderBottom: '1px solid #4FFA7B',
+    borderBottomWidth: '5px',
+  },
 }))`
   color: #fff;
 `;

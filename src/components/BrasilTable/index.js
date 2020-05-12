@@ -36,9 +36,9 @@ export default function BrasilTable() {
             {brasilData.map((item) => (
               <tr key={item.uid}>
                 <td>{item.state.toLowerCase()}</td>
-                <td>{item.cases}</td>
-                <td>{item.suspects}</td>
-                <td>{item.deaths}</td>
+                <td>{item.cases.toLocaleString()}</td>
+                <td>{item.suspects.toLocaleString()}</td>
+                <td>{item.deaths.toLocaleString()}</td>
               </tr>
             ))}
           </tbody>

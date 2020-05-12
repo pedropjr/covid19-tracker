@@ -3,7 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: block;
   height: 550px;
+  width: 100%;
   overflow-y: scroll;
+
+  @media only screen and (max-height: 820px) {
+    height: 350px;
+  }
 
   /* width */
   ::-webkit-scrollbar {
