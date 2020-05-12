@@ -70,10 +70,6 @@ export const Right = styled.div`
     padding-right: 20px;
   }
 
-  a:nth-child(3) {
-    padding-right: 0;
-  }
-
   @media only screen and (max-width: 800px) {
     grid-template-columns: repeat(1, auto);
   }

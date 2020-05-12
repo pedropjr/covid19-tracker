@@ -13,7 +13,7 @@ export const Container = styled.div`
     padding: 50px 0;
   }
 
-  @media only screen and (max-width: 680px) {
+  @media only screen and (max-width: 800px) {
     flex-direction: column;
     padding: 5px 0;
   }

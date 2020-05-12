@@ -13,11 +13,15 @@ export const Container = styled.div`
     color: #fff;
   }
 
-  @media only screen and (max-width: 680px) {
+  @media only screen and (max-width: 800px) {
     flex-direction: row;
     margin-right: 0;
     margin-bottom: 15px;
     height: 100%;
+  }
+
+  @media only screen and (max-width: 450px) {
+    font-size: 15px;
   }
 `;
 
@@ -31,7 +35,7 @@ export const CountryContainer = styled.div`
     margin-right: 10px;
   }
 
-  @media only screen and (max-width: 680px) {
+  @media only screen and (max-width: 800px) {
     flex-direction: column;
 
     img {
@@ -40,7 +44,11 @@ export const CountryContainer = styled.div`
   }
 
   @media only screen and (max-width: 450px) {
-    display: none;
+    color: #fff;
+
+    img {
+      display: none;
+    }
   }
 `;
 
@@ -50,7 +58,7 @@ export const GraphicContainer = styled.div`
   justify-content: center;
   width: 300px;
 
-  @media only screen and (max-width: 680px) {
+  @media only screen and (max-width: 800px) {
     width: 200px;
   }
 
@@ -105,7 +113,7 @@ export const BottomContainer = styled.div`
     text-decoration: underline;
   }
 
-  @media only screen and (max-width: 680px) {
+  @media only screen and (max-width: 800px) {
     display: none;
   }
 `;
