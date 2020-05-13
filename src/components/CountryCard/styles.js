@@ -70,6 +70,7 @@ export const CasesContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  padding-bottom: 20px;
 `;
 
 export const Legend = styled.div`
@@ -102,8 +103,9 @@ export const BottomContainer = styled.div`
   border-top: 1px solid #fff;
   padding: 20px 0;
 
+  color: #fff;
+
   a {
-    color: #fff;
     text-decoration: underline;
   }
 

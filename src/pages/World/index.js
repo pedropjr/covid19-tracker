@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { format, parseISO } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 /** */
 
@@ -33,7 +35,13 @@ function World() {
             <CountryCard
               key={country.country}
               countryData={country}
-              lastUpdate={country.updated_at}
+              lastUpdate={format(
+                parseISO(country.updated_at),
+                'dd/MM/yyyy HH:mm',
+                {
+                  locale: ptBR,
+                }
+              )}
             />
           ))}
         </>

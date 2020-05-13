@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { format, parseISO } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 import api from '~/services/api';
 
 import { Container } from './styles';
 
-export default function BrasilTable() {
+// eslint-disable-next-line react/prop-types
+export default function BrasilTable({ setStateUpdate }) {
   const [brasilData, setBrasilData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   async function loadData() {
     const response = await api.get('api/report/v1');
     await setBrasilData(response.data.data);
+
+    setStateUpdate(
+      format(parseISO(response.data.data[0].datetime), 'dd/MM/yyyy HH:mm', {
+        locale: ptBR,
+      })
+    );
     setLoading(false);
   }
 

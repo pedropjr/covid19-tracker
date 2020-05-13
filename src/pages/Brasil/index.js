@@ -12,6 +12,7 @@ import CountryCard from '~/components/CountryCard';
 export default function Brasil() {
   const [countryData, setCountryData] = useState([]);
   const [lastUpdate, setLastUpdate] = useState('');
+  const [stateUpdate, setStateUpdate] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -47,8 +48,9 @@ export default function Brasil() {
             showFlag
             countryData={countryData}
             lastUpdate={lastUpdate}
+            stateUpdate={stateUpdate}
           />
-          <BrasilTable />
+          <BrasilTable setStateUpdate={setStateUpdate} />
         </>
       )}
     </Container>

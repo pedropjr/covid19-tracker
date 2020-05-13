@@ -14,7 +14,12 @@ import {
   BottomContainer,
 } from './styles';
 
-function CountryCard({ showFlag = false, countryData, lastUpdate }) {
+function CountryCard({
+  showFlag = false,
+  countryData,
+  lastUpdate,
+  stateUpdate,
+}) {
   const data = {
     labels: ['mortes', 'recuperados', 'casos ativos'],
     datasets: [
@@ -80,11 +85,16 @@ function CountryCard({ showFlag = false, countryData, lastUpdate }) {
           <span>{countryData.confirmed}</span>
         </Legend>
       </CasesContainer>
-
-      <BottomContainer>
-        <a href="https://www.who.int/">fonte: OMS</a>
-        <span>{lastUpdate}</span>
-      </BottomContainer>
+      {showFlag ? (
+        <BottomContainer>
+          atualização por estado<span>{stateUpdate}</span>
+          atualização geral<span>{lastUpdate}</span>
+        </BottomContainer>
+      ) : (
+        <BottomContainer>
+          <span>{lastUpdate}</span>
+        </BottomContainer>
+      )}
     </Container>
   );
 }
