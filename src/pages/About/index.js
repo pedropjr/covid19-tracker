@@ -16,12 +16,11 @@ function About() {
       <AboutContainer>
         <Message>
           Essa aplicação foi desenvolvida apenas com o intuito de aprendizado.
-          Todos os dados da aplicação são provenientes da Organização Mundial de
-          Saúde.
+          Todo o código está disponível no link abaixo.
         </Message>
         <Thank>
-          Gostaria de agradecer ao Arthur Ribeiro por disponibilizar a API que
-          tornou essa aplicação possível.
+          Gostaria de agradecer ao Arthur Ribeiro por disponibilizar a API de
+          dados.
         </Thank>
 
         <API>
