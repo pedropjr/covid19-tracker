@@ -1,35 +1,31 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-/**
- * small: < 525
- * medium: 525 <= x <= 900
- * large: > 900
- */
-
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
   background: #101010;
   align-items: center;
-  justify-content: space-between;
   padding: 20px 25px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 15;
+  height: 135px;
 
   div {
     flex: 1;
   }
 
-  @media only screen and (max-width: 800px) {
-    align-items: flex-start;
-  }
-
-  @media only screen and (max-width: 535px) {
-    padding: 20px 5px;
+  @media (max-width: 500px) {
+    padding: 10px 15px;
+    height: 75px;
   }
 `;
 
 export const Left = styled.div`
-  @media only screen and (max-width: 800px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 `;
@@ -48,12 +44,11 @@ export const Middle = styled.div`
     width: 48px;
   }
 
-  @media only screen and (max-width: 535px) {
+  @media (max-width: 1000px) {
     flex-direction: row;
-    white-space: nowrap;
   }
 
-  @media only screen and (max-width: 400px) {
+  @media (max-width: 500px) {
     span {
       font-size: 30px;
     }
@@ -61,21 +56,26 @@ export const Middle = styled.div`
 `;
 
 export const Button = styled.button`
+  display: none;
   background: none;
   border: 0;
+
+  @media (max-width: 1000px) {
+    display: block;
+  }
 `;
 
 export const Right = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+  display: flex;
+  flex-direction: row;
   justify-content: flex-end;
 
   a {
     padding-right: 20px;
   }
 
-  @media only screen and (max-width: 800px) {
-    grid-template-columns: repeat(1, auto);
+  @media (max-width: 1000px) {
+    display: none;
   }
 `;
 export const NavLinkCustom = styled(NavLink).attrs(() => ({

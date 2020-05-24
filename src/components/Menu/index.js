@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 import { Container, NavLinkCustom } from './styles';
 
@@ -15,6 +16,12 @@ function Menu({ handleMenuVisibility, isVisible = false }) {
       <NavLinkCustom to="/sobre" onClick={handleMenuVisibility}>
         sobre
       </NavLinkCustom>
+
+      <IoMdCloseCircleOutline
+        onClick={handleMenuVisibility}
+        size={60}
+        color="#fff"
+      />
     </Container>
   );
 }

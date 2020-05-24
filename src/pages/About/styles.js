@@ -7,6 +7,7 @@ export const Container = styled.div`
   padding: 100px;
   color: #fff;
   font-size: 20px;
+  margin-top: 135px;
 
   a {
     text-decoration-style: none;
@@ -15,6 +16,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 480px) {
     padding: 50px 0;
+    margin-top: 75px;
   }
 `;
 
@@ -27,10 +29,6 @@ export const AboutContainer = styled.div`
   height: 300px;
   width: 350px;
   padding: 0 20px;
-
-  @media only screen and (max-width: 800px) {
-    width: 100%;
-  }
 `;
 
 export const Message = styled.span`
