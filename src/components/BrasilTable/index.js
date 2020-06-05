@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 
@@ -12,15 +13,20 @@ export default function BrasilTable({ setStateUpdate }) {
   const [loading, setLoading] = useState(false);
 
   async function loadData() {
-    const response = await api.get('api/report/v1');
-    await setBrasilData(response.data.data);
+    try {
+      const response = await api.get('api/report/v1');
+      await setBrasilData(response.data.data);
 
-    setStateUpdate(
-      format(parseISO(response.data.data[0].datetime), 'dd/MM/yyyy HH:mm', {
-        locale: ptBR,
-      })
-    );
-    setLoading(false);
+      setStateUpdate(
+        format(parseISO(response.data.data[0].datetime), 'dd/MM/yyyy HH:mm', {
+          locale: ptBR,
+        })
+      );
+
+      setLoading(false);
+    } catch (err) {
+      toast.error('Erro com o servidor, tente novamente em alguns instantes!');
+    }
   }
 
   useEffect(() => {

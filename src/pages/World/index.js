@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-
-/** */
+import { toast } from 'react-toastify';
 
 import CountryCard from '~/components/CountryCard';
 import api from '~/services/api';
@@ -22,7 +21,11 @@ function World() {
       setLoading(0);
     }
 
-    loadCountriesData();
+    try {
+      loadCountriesData();
+    } catch (err) {
+      toast.error('Erro com o servidor, tente novamente em alguns instantes!');
+    }
   }, []);
 
   return (

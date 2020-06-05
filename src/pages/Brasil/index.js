@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import ReactLoading from 'react-loading';
+import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 
@@ -32,10 +33,14 @@ export default function Brasil() {
       );
       setLastUpdate(formatedDate);
     }
-    setLoading(true);
-    loadCountryData();
-    loadLastUpdate();
-    setLoading(false);
+    try {
+      setLoading(true);
+      loadCountryData();
+      loadLastUpdate();
+      setLoading(false);
+    } catch (err) {
+      toast.error('Erro com o servidor, tente novamente em alguns instantes!');
+    }
   }, []);
 
   return (
