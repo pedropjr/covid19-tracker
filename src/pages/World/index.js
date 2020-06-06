@@ -1,51 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { format, parseISO } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
-import { toast } from 'react-toastify';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { getWorldInfoRequest } from '~/store/modules/application/actions';
 import CountryCard from '~/components/CountryCard';
-import api from '~/services/api';
 
 import { Container } from './styles';
+import SkeletonCountryCard from '~/components/Skeleton/CountryCard';
 
 function World() {
-  const [countriesData, setCountriesData] = useState([]);
-  const [loading, setLoading] = useState(0);
+  const dispatch = useDispatch();
+  const { world } = useSelector((state) => state.application);
+  const { loading } = useSelector((state) => state.application);
 
   useEffect(() => {
     async function loadCountriesData() {
-      setLoading(1);
-      const response = await api.get('api/report/v1/countries');
-
-      setCountriesData(response.data.data);
-      setLoading(0);
+      dispatch(getWorldInfoRequest());
     }
-
-    try {
-      loadCountriesData();
-    } catch (err) {
-      toast.error('Erro com o servidor, tente novamente em alguns instantes!');
-    }
-  }, []);
+    loadCountriesData();
+  }, [dispatch]);
 
   return (
     <Container loading={loading}>
       {loading ? (
-        <span>carregando...</span>
+        <>
+          <SkeletonCountryCard />
+          <SkeletonCountryCard />
+          <SkeletonCountryCard />
+        </>
       ) : (
         <>
-          {countriesData.map((country) => (
-            <CountryCard
-              key={country.country}
-              countryData={country}
-              lastUpdate={format(
-                parseISO(country.updated_at),
-                'dd/MM/yyyy HH:mm',
-                {
-                  locale: ptBR,
-                }
-              )}
-            />
+          {world.map((country) => (
+            <CountryCard key={country.country} countryData={country} />
           ))}
         </>
       )}

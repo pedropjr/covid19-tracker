@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+
 import { FaCircle } from 'react-icons/fa';
 
 import {
@@ -14,12 +15,7 @@ import {
   BottomContainer,
 } from './styles';
 
-function CountryCard({
-  showFlag = false,
-  countryData,
-  lastUpdate,
-  stateUpdate,
-}) {
+function CountryCard({ countryData }) {
   const data = {
     labels: ['mortes', 'recuperados', 'casos ativos'],
     datasets: [
@@ -35,7 +31,7 @@ function CountryCard({
     <Container>
       <SmallContainer>
         <CountryContainer>
-          {showFlag && (
+          {countryData.country === 'Brazil' && (
             <img
               src="https://www.countryflags.io/br/flat/48.png"
               alt="country_flag"
@@ -85,16 +81,9 @@ function CountryCard({
           <span>{countryData.confirmed}</span>
         </Legend>
       </CasesContainer>
-      {showFlag ? (
-        <BottomContainer>
-          atualização por estado<span>{stateUpdate}</span>
-          atualização geral<span>{lastUpdate}</span>
-        </BottomContainer>
-      ) : (
-        <BottomContainer>
-          <span>{lastUpdate}</span>
-        </BottomContainer>
-      )}
+      <BottomContainer>
+        <span>{countryData.updated_at}</span>
+      </BottomContainer>
     </Container>
   );
 }
