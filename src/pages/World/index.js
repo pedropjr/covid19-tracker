@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getWorldInfoRequest } from '~/store/modules/application/actions';
@@ -8,6 +8,7 @@ import { Container } from './styles';
 import SkeletonCountryCard from '~/components/Skeleton/CountryCard';
 
 function World() {
+  // const [page = 1, setPage] = useState([]);
   const dispatch = useDispatch();
   const { world } = useSelector((state) => state.application);
   const { loading } = useSelector((state) => state.application);

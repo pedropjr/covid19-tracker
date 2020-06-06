@@ -1,3 +1,17 @@
+export function getCountryInfoRequest(name) {
+  return {
+    type: '@application/COUNTRY_REQUEST',
+    payload: { name },
+  };
+}
+
+export function getCountryInfoSuccess(data) {
+  return {
+    type: '@application/COUNTRY_SUCCESS',
+    payload: { data },
+  };
+}
+
 export function getBrazilInfoRequest() {
   return {
     type: '@application/BRAZIL_REQUEST',

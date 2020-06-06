@@ -5,14 +5,20 @@ import ReactLoading from 'react-loading';
 import { Container } from './styles';
 import BrasilTable from '~/components/BrasilTable';
 import CountryCard from '~/components/CountryCard';
-import { getBrazilInfoRequest } from '~/store/modules/application/actions';
+import {
+  getCountryInfoRequest,
+  getBrazilInfoRequest,
+} from '~/store/modules/application/actions';
 
 export default function Brasil() {
   const dispatch = useDispatch();
-  const { brazil, loading } = useSelector((state) => state.application);
+  const { loading, country, states_date } = useSelector(
+    (state) => state.application
+  );
 
   useEffect(() => {
     async function loadBrazil() {
+      dispatch(getCountryInfoRequest('Brazil'));
       dispatch(getBrazilInfoRequest());
     }
     loadBrazil();
@@ -24,7 +30,7 @@ export default function Brasil() {
         <ReactLoading type="spokes" color="#4FFA7B" height="10%" width="10%" />
       ) : (
         <>
-          <CountryCard countryData={brazil} />
+          <CountryCard countryData={country} states_date={states_date} />
           <BrasilTable />
         </>
       )}

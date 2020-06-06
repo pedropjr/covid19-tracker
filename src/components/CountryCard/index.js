@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
-
 import { FaCircle } from 'react-icons/fa';
 
 import {
@@ -15,7 +14,7 @@ import {
   BottomContainer,
 } from './styles';
 
-function CountryCard({ countryData }) {
+function CountryCard({ countryData, states_date }) {
   const data = {
     labels: ['mortes', 'recuperados', 'casos ativos'],
     datasets: [
@@ -62,7 +61,7 @@ function CountryCard({ countryData }) {
             <FaCircle color="#4FFA7B" size={14} />
             <span>recuperados</span>
           </Left>
-          <span>{countryData.recovered}</span>
+          <span>{!countryData.recovered && 'não informado'}</span>
         </Legend>
 
         <Legend>
@@ -81,9 +80,14 @@ function CountryCard({ countryData }) {
           <span>{countryData.confirmed}</span>
         </Legend>
       </CasesContainer>
-      <BottomContainer>
-        <span>{countryData.updated_at}</span>
-      </BottomContainer>
+      {countryData.country === 'Brazil' && (
+        <BottomContainer>
+          <span>atualização por estado</span>
+          <span>{states_date}</span>
+          <span>atualização geral</span>
+          <span>{countryData.formatted_updated_at}</span>
+        </BottomContainer>
+      )}
     </Container>
   );
 }

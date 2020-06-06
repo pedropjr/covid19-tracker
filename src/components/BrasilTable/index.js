@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Container } from './styles';
 
 export default function BrasilTable() {
-  const { states } = useSelector((state) => state.application);
+  const { brazil } = useSelector((state) => state.application);
 
   return (
     <Container>
@@ -19,7 +19,7 @@ export default function BrasilTable() {
           </tr>
         </thead>
         <tbody>
-          {states.map((item) => (
+          {brazil.map((item) => (
             <tr key={item.uid}>
               <td>{item.state.toLowerCase()}</td>
               <td>{item.cases.toLocaleString()}</td>
