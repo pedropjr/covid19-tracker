@@ -61,7 +61,7 @@ function CountryCard({ countryData, states_date }) {
             <FaCircle color="#4FFA7B" size={14} />
             <span>recuperados</span>
           </Left>
-          <span>{!countryData.recovered && 'não informado'}</span>
+          <span>{countryData.recovered}</span>
         </Legend>
 
         <Legend>

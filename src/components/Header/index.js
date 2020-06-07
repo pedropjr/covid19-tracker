@@ -34,7 +34,6 @@ function Header() {
       <Right>
         <NavLinkCustom to="/brasil">brasil</NavLinkCustom>
         <NavLinkCustom to="/mundo">mundo</NavLinkCustom>
-        <NavLinkCustom to="/sobre">sobre</NavLinkCustom>
       </Right>
 
       <Menu

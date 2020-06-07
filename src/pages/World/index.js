@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import PageContainer from '~/components/PageContainer';
+import CountriesList from '~/components/CountriesList';
 import { getWorldInfoRequest } from '~/store/modules/application/actions';
-import CountryCard from '~/components/CountryCard';
 
 import { Container } from './styles';
-import SkeletonCountryCard from '~/components/Skeleton/CountryCard';
 
 function World() {
-  // const [page = 1, setPage] = useState([]);
+  const [page, setPage] = useState(1);
+  const [pagedWorld, setPagedWorld] = useState([]);
   const dispatch = useDispatch();
   const { world } = useSelector((state) => state.application);
   const { loading } = useSelector((state) => state.application);
@@ -20,21 +21,21 @@ function World() {
     loadCountriesData();
   }, [dispatch]);
 
+  useEffect(() => {
+    const offset = (Number(page) - 1) * 16;
+    setPagedWorld(world.slice(offset, offset + 16));
+    window.scrollTo(0, 0);
+  }, [page, world]);
+
   return (
-    <Container loading={loading}>
-      {loading ? (
-        <>
-          <SkeletonCountryCard />
-          <SkeletonCountryCard />
-          <SkeletonCountryCard />
-        </>
-      ) : (
-        <>
-          {world.map((country) => (
-            <CountryCard key={country.country} countryData={country} />
-          ))}
-        </>
-      )}
+    <Container>
+      <CountriesList loading={loading} pagedWorld={pagedWorld} />
+      <PageContainer
+        setPage={setPage}
+        page={page}
+        length={pagedWorld.length}
+        loading={loading}
+      />
     </Container>
   );
 }
