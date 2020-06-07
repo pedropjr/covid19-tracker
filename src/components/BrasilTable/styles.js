@@ -8,6 +8,7 @@ export const Container = styled.div`
 
   @media (min-width: 800px) {
     overflow-y: scroll;
+    margin-left: 25px;
 
     /* width */
     ::-webkit-scrollbar {

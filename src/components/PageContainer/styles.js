@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  margin-top: 30px;
+  display: ${(props) => (props.loading ? 'none' : 'flex')};
   justify-content: center;
 
   span {

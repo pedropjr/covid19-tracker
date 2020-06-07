@@ -13,6 +13,10 @@ function Menu({ handleMenuVisibility, isVisible = false }) {
       <NavLinkCustom to="/mundo" onClick={handleMenuVisibility}>
         mundo
       </NavLinkCustom>
+      <NavLinkCustom to="/sobre" onClick={handleMenuVisibility}>
+        sobre
+      </NavLinkCustom>
+
       <IoMdCloseCircleOutline
         onClick={handleMenuVisibility}
         size={60}

@@ -7,7 +7,6 @@ export const Container = styled.div`
   background: #4d4d4d;
   border-radius: 4px;
   padding: 15px 20px;
-  margin-right: 25px;
 
   span {
     color: #fff;
@@ -15,7 +14,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 800px) {
     flex-direction: row;
-    margin-right: 0;
+
     margin-bottom: 15px;
   }
 

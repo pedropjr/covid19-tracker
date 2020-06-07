@@ -7,24 +7,19 @@ import { Container, InnerContainer, PageButton } from './styles';
 
 function PageContainer({ setPage, page, length, loading }) {
   return (
-    <>
+    <Container length={length} loading={loading}>
       {!loading && (
-        <Container length={length}>
-          <InnerContainer>
-            <PageButton disabled={page === 1} onClick={() => setPage(page - 1)}>
-              <MdChevronLeft size={30} color="#fff" />
-            </PageButton>
-            <span>{page}</span>
-            <PageButton
-              disabled={length < 10}
-              onClick={() => setPage(page + 1)}
-            >
-              <MdChevronRight size={30} color="#fff" />
-            </PageButton>
-          </InnerContainer>
-        </Container>
+        <InnerContainer>
+          <PageButton disabled={page === 1} onClick={() => setPage(page - 1)}>
+            <MdChevronLeft size={30} color="#fff" />
+          </PageButton>
+          <span>{page}</span>
+          <PageButton disabled={length < 10} onClick={() => setPage(page + 1)}>
+            <MdChevronRight size={30} color="#fff" />
+          </PageButton>
+        </InnerContainer>
       )}
-    </>
+    </Container>
   );
 }
 

@@ -14,18 +14,11 @@ function About() {
   return (
     <Container>
       <AboutContainer>
-        <Message>
-          Essa aplicação foi desenvolvida apenas com o intuito de aprendizado.
-          Todo o código está disponível no link abaixo.
-        </Message>
-        <Thank>
-          Gostaria de agradecer ao Arthur Ribeiro por disponibilizar a API de
-          dados.
-        </Thank>
+        <Message>Aplicação desenvolvida por Pedro Borges Jr.</Message>
 
         <API>
           <a href="https://github.com/devarthurribeiro/covid19-brazil-api">
-            🚀 repositório API
+            🚀 API de dados
           </a>
         </API>
         <SourceCode>

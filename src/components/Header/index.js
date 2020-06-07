@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
 import { MdReorder } from 'react-icons/md';
+
+import history from '~/services/history';
 import Menu from '~/components/Menu';
 
 import logo from '~/assets/logo.svg';
@@ -23,7 +24,7 @@ function Header() {
   return (
     <Container>
       <Left />
-      <Middle>
+      <Middle onClick={() => history.push('brasil')}>
         <span>COVID-19 Tracker</span>
         <img src={logo} alt="logo" />
       </Middle>
@@ -34,6 +35,7 @@ function Header() {
       <Right>
         <NavLinkCustom to="/brasil">brasil</NavLinkCustom>
         <NavLinkCustom to="/mundo">mundo</NavLinkCustom>
+        <NavLinkCustom to="/sobre">sobre</NavLinkCustom>
       </Right>
 
       <Menu
