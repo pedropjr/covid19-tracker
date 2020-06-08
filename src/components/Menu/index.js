@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 import { Container, NavLinkCustom } from './styles';
 
-function Menu({ handleMenuVisibility, isVisible = false }) {
+export default function Menu({ handleMenuVisibility, isVisible }) {
   return (
     <Container isVisible={isVisible}>
       <NavLinkCustom to="/brasil" onClick={handleMenuVisibility}>
@@ -26,4 +26,11 @@ function Menu({ handleMenuVisibility, isVisible = false }) {
   );
 }
 
-export default Menu;
+Menu.propTypes = {
+  handleMenuVisibility: PropTypes.func.isRequired,
+  isVisible: PropTypes.bool,
+};
+
+Menu.defaultProps = {
+  isVisible: false,
+};

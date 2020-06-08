@@ -1,11 +1,11 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 import { Container, InnerContainer, PageButton } from './styles';
 
-function PageContainer({ setPage, page, length, loading }) {
+export default function PageContainer({ setPage, page, length, loading }) {
   return (
     <Container length={length} loading={loading}>
       {!loading && (
@@ -23,4 +23,9 @@ function PageContainer({ setPage, page, length, loading }) {
   );
 }
 
-export default PageContainer;
+PageContainer.propTypes = {
+  setPage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  length: PropTypes.number.isRequired,
+  loading: PropTypes.number.isRequired,
+};

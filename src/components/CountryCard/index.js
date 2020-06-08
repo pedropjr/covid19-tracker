@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { FaCircle } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 import {
   Container,
@@ -14,7 +14,7 @@ import {
   BottomContainer,
 } from './styles';
 
-function CountryCard({ countryData, states_date }) {
+export default function CountryCard({ countryData, states_date }) {
   const data = {
     labels: ['mortes', 'recuperados', 'casos ativos'],
     datasets: [
@@ -92,4 +92,10 @@ function CountryCard({ countryData, states_date }) {
   );
 }
 
-export default CountryCard;
+CountryCard.propTypes = {
+  states_date: PropTypes.string,
+};
+
+CountryCard.defaultProps = {
+  states_date: null,
+};

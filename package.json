@@ -13,6 +13,7 @@
     "date-fns": "^2.13.0",
     "history": "^4.10.1",
     "immer": "^6.0.9",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
     "react-debounce-input": "^3.2.2",

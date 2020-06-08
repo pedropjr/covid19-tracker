@@ -1,12 +1,12 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import SkeletonCountryCard from '~/components/Skeleton/CountryCard';
 import CountryCard from '~/components/CountryCard';
 
 import { Container } from './styles';
 
-function CountriesList({ loading, pagedWorld }) {
+export default function CountriesList({ loading, pagedWorld }) {
   return (
     <Container loading={loading}>
       {loading ? (
@@ -27,4 +27,7 @@ function CountriesList({ loading, pagedWorld }) {
   );
 }
 
-export default CountriesList;
+CountriesList.propTypes = {
+  loading: PropTypes.number.isRequired,
+  pagedWorld: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
