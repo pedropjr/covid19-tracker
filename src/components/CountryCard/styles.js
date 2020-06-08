@@ -8,14 +8,14 @@ export const Container = styled.div`
   border-radius: 4px;
   padding: 15px 20px;
 
-  span {
-    color: #fff;
-    font-size: 2.4rem;
-  }
+  color: #fff;
+  font-size: 2.4rem;
 
   @media only screen and (max-width: 800px) {
     flex-direction: row;
     margin-bottom: 15px;
+    padding: 5px 10px;
+    font-size: 1.8rem;
   }
   @media only screen and (max-width: 480px) {
     height: 150px;
@@ -114,4 +114,5 @@ export const BottomContainer = styled.div`
 export const SmallContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;

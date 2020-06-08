@@ -12,8 +12,12 @@ export const Container = styled.div`
     grid-template-columns: repeat(4, auto);
   }
 
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 1600px) {
     grid-template-columns: repeat(3, auto);
+  }
+
+  @media only screen and (max-width: 1600px) {
+    grid-template-columns: repeat(2, auto);
   }
 
   @media only screen and (max-width: 800px) {

@@ -13,6 +13,7 @@ export const Container = styled.div`
   width: 100%;
   z-index: 15;
   height: 135px;
+  transition: box-shadow 0.3s;
 
   &:hover {
     box-shadow: 2px 2px 20px #333;

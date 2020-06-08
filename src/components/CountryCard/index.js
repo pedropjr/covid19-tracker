@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { FaCircle } from 'react-icons/fa';
@@ -80,7 +81,7 @@ export default function CountryCard({ countryData, states_date }) {
           <span>{countryData.confirmed}</span>
         </Legend>
       </CasesContainer>
-      {countryData.country === 'Brazil' && (
+      {countryData.country === 'Brazil' && states_date && (
         <BottomContainer>
           <span>atualização por estado</span>
           <span>{states_date}</span>

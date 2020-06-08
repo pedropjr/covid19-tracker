@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   margin-top: 135px;
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 500px) {
     margin-top: 75px;
   }
 `;
