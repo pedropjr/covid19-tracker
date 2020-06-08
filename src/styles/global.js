@@ -15,12 +15,13 @@ export default createGlobalStyle`
 	}
 	html, body, #root {
     background: #101010;
+    font-size: 62.5%;
 	}
 	body {
 		-webkit-font-smoothing: antialiased;
 	}
-	body, input, button {
-		font: 18px 'Rationale', sans-serif;
+	 body, input, button {
+		font-family: 'Rationale', sans-serif;
   }
 
 	a {

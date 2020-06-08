@@ -14,6 +14,10 @@ export const Container = styled.div`
   z-index: 15;
   height: 135px;
 
+  &:hover {
+    box-shadow: 2px 2px 20px #333;
+  }
+
   div {
     flex: 1;
   }
@@ -38,7 +42,7 @@ export const Middle = styled.div`
 
   span {
     color: #fff;
-    font-size: 40px;
+    font-size: 4rem;
   }
   img {
     height: 48px;
@@ -51,7 +55,7 @@ export const Middle = styled.div`
 
   @media (max-width: 500px) {
     span {
-      font-size: 30px;
+      font-size: 3rem;
     }
   }
 `;
@@ -70,6 +74,7 @@ export const Right = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  font-size: 2.4rem;
 
   a {
     padding-right: 20px;

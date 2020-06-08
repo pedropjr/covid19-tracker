@@ -25,7 +25,7 @@ export default function Brasil() {
   }, [dispatch]);
 
   return (
-    <Container>
+    <Container loading={loading}>
       {loading ? (
         <ReactLoading type="spokes" color="#4FFA7B" height="10%" width="10%" />
       ) : (

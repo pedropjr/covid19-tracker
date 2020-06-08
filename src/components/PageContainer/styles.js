@@ -5,7 +5,7 @@ export const Container = styled.div`
   justify-content: center;
 
   span {
-    font-size: 25px;
+    font-size: 2.4rem;
     color: #fff;
     padding: 0 10px;
   }

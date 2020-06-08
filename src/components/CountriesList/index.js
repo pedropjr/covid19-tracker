@@ -14,6 +14,7 @@ function CountriesList({ loading, pagedWorld }) {
           <SkeletonCountryCard />
           <SkeletonCountryCard />
           <SkeletonCountryCard />
+          <SkeletonCountryCard />
         </>
       ) : (
         <>

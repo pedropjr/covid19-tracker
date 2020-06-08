@@ -27,6 +27,17 @@ function World() {
     window.scrollTo(0, 0);
   }, [page, world]);
 
+  /**  function handleInputChange(event) {
+    setPagedWorld([]);
+    // eslint-disable-next-line array-callback-return
+    world.map((country) => {
+      const isIncluded = country.country.includes(event.target.value);
+      if (isIncluded) {
+        setPagedWorld(...pagedWorld, country);
+      }
+    });
+  } */
+
   return (
     <Container>
       <CountriesList loading={loading} pagedWorld={pagedWorld} />

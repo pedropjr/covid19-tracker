@@ -14,6 +14,7 @@ export const Container = styled.div`
   width: 100vw;
   padding: 5px;
   z-index: 5;
+  font-size: 2.4rem;
 
   a + a {
     padding-top: 20px;

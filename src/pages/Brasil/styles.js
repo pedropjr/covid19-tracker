@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: ${(props) => props.loading && 'center'};
   padding: 50px 200px;
   margin-top: 135px;
 

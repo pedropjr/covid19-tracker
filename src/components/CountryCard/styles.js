@@ -10,16 +10,14 @@ export const Container = styled.div`
 
   span {
     color: #fff;
+    font-size: 2.4rem;
   }
 
   @media only screen and (max-width: 800px) {
     flex-direction: row;
-
     margin-bottom: 15px;
   }
-
   @media only screen and (max-width: 480px) {
-    font-size: 18px;
     height: 150px;
   }
 `;
