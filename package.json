@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.1",
     "@material-ui/lab": "^4.0.0-alpha.55",
+    "@researchgate/react-intersection-observer": "^1.2.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -13,6 +14,7 @@
     "date-fns": "^2.13.0",
     "history": "^4.10.1",
     "immer": "^6.0.9",
+    "intersection-observer": "^0.10.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
@@ -23,6 +25,7 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "react-switch": "^5.0.1",
     "react-toastify": "^6.0.5",
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3",

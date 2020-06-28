@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
+import 'intersection-observer';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -16,7 +17,7 @@ function App() {
       <Router history={history}>
         <Routes />
         <GlobalStyle />
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={3000} style={{ fontSize: '2rem' }} />
       </Router>
     </Provider>
   );

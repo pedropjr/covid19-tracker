@@ -1,52 +1,61 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Observer from '@researchgate/react-intersection-observer';
 
-import PageContainer from '~/components/PageContainer';
+import SkeletonCountriesList from '~/components/Skeleton/Countries';
+import Input from '~/components/Input';
 import CountriesList from '~/components/CountriesList';
 import { getWorldInfoRequest } from '~/store/modules/application/actions';
+import formatString from '~/util/formatString';
 
 import { Container } from './styles';
 
 function World() {
   const [page, setPage] = useState(1);
-  const [pagedWorld, setPagedWorld] = useState([]);
   const dispatch = useDispatch();
-  const { world } = useSelector((state) => state.application);
-  const { loading } = useSelector((state) => state.application);
+  const { world, loading, searchInput } = useSelector(
+    (state) => state.application
+  );
 
   useEffect(() => {
     async function loadCountriesData() {
-      dispatch(getWorldInfoRequest());
+      await dispatch(getWorldInfoRequest());
     }
     loadCountriesData();
   }, [dispatch]);
 
-  useEffect(() => {
+  const pagedWorld = useMemo(() => {
+    if (searchInput !== '') {
+      setPage(1);
+      return world.filter((country) =>
+        country.country.includes(formatString(searchInput))
+      );
+    }
     const offset = (Number(page) - 1) * 16;
-    setPagedWorld(world.slice(offset, offset + 16));
-    window.scrollTo(0, 0);
-  }, [page, world]);
+    return world.slice(0, offset + 16);
+  }, [page, searchInput, world]);
 
-  /**  function handleInputChange(event) {
-    setPagedWorld([]);
-    // eslint-disable-next-line array-callback-return
-    world.map((country) => {
-      const isIncluded = country.country.includes(event.target.value);
-      if (isIncluded) {
-        setPagedWorld(...pagedWorld, country);
-      }
-    });
-  } */
+  function handleIntersection({ isIntersecting }) {
+    if (isIntersecting) {
+      setTimeout(() => setPage(page + 1), 1000);
+    }
+  }
 
   return (
     <Container>
-      <CountriesList loading={loading} pagedWorld={pagedWorld} />
-      <PageContainer
-        setPage={setPage}
-        page={page}
-        length={pagedWorld.length}
-        loading={loading}
-      />
+      {loading ? (
+        <SkeletonCountriesList />
+      ) : (
+        <>
+          <Input />
+          <CountriesList pagedWorld={pagedWorld} />
+          {!loading && pagedWorld.length !== world.length && (
+            <Observer onChange={handleIntersection} threshold={1}>
+              <span />
+            </Observer>
+          )}
+        </>
+      )}
     </Container>
   );
 }

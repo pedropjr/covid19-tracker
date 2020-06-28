@@ -9,16 +9,13 @@ export const Container = styled.div`
   padding: 15px 20px;
 
   color: #fff;
-  font-size: 2.4rem;
+  font-size: 2.5rem;
 
   @media only screen and (max-width: 800px) {
     flex-direction: row;
     margin-bottom: 15px;
     padding: 5px 10px;
-    font-size: 1.8rem;
-  }
-  @media only screen and (max-width: 480px) {
-    height: 150px;
+    font-size: 2rem;
   }
 `;
 
@@ -68,6 +65,10 @@ export const CasesContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   padding-bottom: 20px;
+
+  @media (max-width: 800px) {
+    padding-bottom: 0;
+  }
 `;
 
 export const Legend = styled.div`

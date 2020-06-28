@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   world: [],
   states_date: '',
   loading: 0,
+  searchInput: '',
 };
 
 export default function application(state = INITIAL_STATE, action) {
@@ -29,6 +30,10 @@ export default function application(state = INITIAL_STATE, action) {
         draft.brazil = action.payload.data.brazil;
         draft.states_date = action.payload.data.states_date;
         draft.loading = 0;
+        break;
+      }
+      case '@application/SET_INPUT': {
+        draft.searchInput = action.payload.searchInput;
         break;
       }
       case '@application/WORLD_REQUEST': {

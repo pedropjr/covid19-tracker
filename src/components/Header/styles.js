@@ -15,10 +15,6 @@ export const Container = styled.div`
   height: 135px;
   transition: box-shadow 0.3s;
 
-  &:hover {
-    box-shadow: 2px 2px 20px #333;
-  }
-
   div {
     flex: 1;
   }

@@ -37,3 +37,10 @@ export function getWorldInfoSuccess(data) {
     payload: { data },
   };
 }
+
+export function setSearchInput(searchInput) {
+  return {
+    type: '@application/SET_INPUT',
+    payload: { searchInput },
+  };
+}
