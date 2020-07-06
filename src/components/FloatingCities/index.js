@@ -1,14 +1,15 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Input from '~/components/Input';
 import getCities from '~/queries/getCities';
+import Input from '~/components/Input';
 import { setCitySearchInput } from '~/store/modules/application/actions';
 
-import { Container } from './styles';
+import { Container, CustomCloseCircle } from './styles';
 import CityCard from '~/components/CityCard';
 
-function Cities() {
+function FloatingCities({ isShowing, setIsShowing }) {
   const dispatch = useDispatch();
   const [cities, setCities] = useState(undefined);
   const { citySearchInput } = useSelector((state) => state.application);
@@ -32,11 +33,16 @@ function Cities() {
   }, [citySearchInput, dispatch]);
 
   return (
-    <Container>
+    <Container isShowing={isShowing}>
+      <div>
+        <CustomCloseCircle onClick={() => setIsShowing(false)} />
+      </div>
+
       <Input
         placeholder="Digite o nome de um município"
         debounceTimeout={1000}
       />
+
       {cities &&
         cities.map((city) => (
           <CityCard key={city.city_ibge_code} city={city} />
@@ -45,4 +51,4 @@ function Cities() {
   );
 }
 
-export default Cities;
+export default FloatingCities;

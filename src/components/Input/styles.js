@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   background: #4ffa7b;
   border-radius: 4px;
   height: 50px;
   padding: 0 5px;
-  margin-bottom: 25px;
   width: 100%;
   max-width: 500px;
+  margin-bottom: 15px;
 
   input {
     border: none;
@@ -17,6 +18,7 @@ export const Container = styled.div`
     background: none;
     color: #fff;
     width: 100%;
+    height: 43px;
 
     ::placeholder {
       color: #fff;

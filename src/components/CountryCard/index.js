@@ -4,6 +4,8 @@ import { Doughnut } from 'react-chartjs-2';
 import { FaCircle } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
+import formatDate from '~/util/formatDate';
+
 import {
   Container,
   SmallContainer,
@@ -86,7 +88,7 @@ export default function CountryCard({ countryData, states_date }) {
           <span>atualização por estado</span>
           <span>{states_date}</span>
           <span>atualização geral</span>
-          <span>{countryData.formatted_updated_at}</span>
+          <span>{formatDate(countryData.updated_at, true)}</span>
         </BottomContainer>
       )}
     </Container>

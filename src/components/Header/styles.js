@@ -11,7 +11,7 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 15;
+  z-index: 10;
   height: 135px;
   transition: box-shadow 0.3s;
 

@@ -38,9 +38,16 @@ export function getWorldInfoSuccess(data) {
   };
 }
 
-export function setSearchInput(searchInput) {
+export function setCountrySearchInput(countrySearchInput) {
   return {
-    type: '@application/SET_INPUT',
-    payload: { searchInput },
+    type: '@application/SET_COUNTRY_INPUT',
+    payload: { countrySearchInput },
+  };
+}
+
+export function setCitySearchInput(citySearchInput) {
+  return {
+    type: '@application/SET_CITY_INPUT',
+    payload: { citySearchInput },
   };
 }

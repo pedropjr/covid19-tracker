@@ -10,6 +10,9 @@ export default function Menu({ handleMenuVisibility, isVisible }) {
       <NavLinkCustom to="/brasil" onClick={handleMenuVisibility}>
         brasil
       </NavLinkCustom>
+      <NavLinkCustom to="/cidades" onClick={handleMenuVisibility}>
+        cidades do brasil
+      </NavLinkCustom>
       <NavLinkCustom to="/mundo" onClick={handleMenuVisibility}>
         mundo
       </NavLinkCustom>

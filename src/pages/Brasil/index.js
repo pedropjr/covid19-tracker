@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ReactLoading from 'react-loading';
 
 import { Container } from './styles';
+import FloatingButton from '~/components/FloatingButton';
+import FloatingCities from '~/components/FloatingCities';
 import BrasilTable from '~/components/BrasilTable';
 import CountryCard from '~/components/CountryCard';
 import {
@@ -11,6 +13,7 @@ import {
 } from '~/store/modules/application/actions';
 
 export default function Brasil() {
+  const [isShowing, setIsShowing] = useState();
   const dispatch = useDispatch();
   const { loading, country, states_date } = useSelector(
     (state) => state.application
@@ -32,6 +35,8 @@ export default function Brasil() {
         <>
           <CountryCard countryData={country} states_date={states_date} />
           <BrasilTable />
+          <FloatingButton isShowing={isShowing} setIsShowing={setIsShowing} />
+          <FloatingCities isShowing={isShowing} setIsShowing={setIsShowing} />
         </>
       )}
     </Container>

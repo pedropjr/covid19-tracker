@@ -5,7 +5,10 @@ import Observer from '@researchgate/react-intersection-observer';
 import SkeletonCountriesList from '~/components/Skeleton/Countries';
 import Input from '~/components/Input';
 import CountriesList from '~/components/CountriesList';
-import { getWorldInfoRequest } from '~/store/modules/application/actions';
+import {
+  getWorldInfoRequest,
+  setCountrySearchInput,
+} from '~/store/modules/application/actions';
 import formatString from '~/util/formatString';
 
 import { Container } from './styles';
@@ -13,7 +16,7 @@ import { Container } from './styles';
 function World() {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
-  const { world, loading, searchInput } = useSelector(
+  const { world, loading, countrySearchInput } = useSelector(
     (state) => state.application
   );
 
@@ -22,18 +25,22 @@ function World() {
       await dispatch(getWorldInfoRequest());
     }
     loadCountriesData();
+
+    return () => {
+      dispatch(setCountrySearchInput(''));
+    };
   }, [dispatch]);
 
   const pagedWorld = useMemo(() => {
-    if (searchInput !== '') {
+    if (countrySearchInput !== '') {
       setPage(1);
       return world.filter((country) =>
-        country.country.includes(formatString(searchInput))
+        country.country.includes(formatString(countrySearchInput))
       );
     }
     const offset = (Number(page) - 1) * 16;
     return world.slice(0, offset + 16);
-  }, [page, searchInput, world]);
+  }, [page, countrySearchInput, world]);
 
   function handleIntersection({ isIntersecting }) {
     if (isIntersecting) {
@@ -47,7 +54,7 @@ function World() {
         <SkeletonCountriesList />
       ) : (
         <>
-          <Input />
+          <Input placeholder="Digite o nome de um país" debounceTimeout={600} />
           <CountriesList pagedWorld={pagedWorld} />
           {!loading && pagedWorld.length !== world.length && (
             <Observer onChange={handleIntersection} threshold={1}>

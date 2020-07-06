@@ -7,7 +7,8 @@ const INITIAL_STATE = {
   world: [],
   states_date: '',
   loading: 0,
-  searchInput: '',
+  countrySearchInput: '',
+  citySearchInput: '',
 };
 
 export default function application(state = INITIAL_STATE, action) {
@@ -32,8 +33,12 @@ export default function application(state = INITIAL_STATE, action) {
         draft.loading = 0;
         break;
       }
-      case '@application/SET_INPUT': {
-        draft.searchInput = action.payload.searchInput;
+      case '@application/SET_COUNTRY_INPUT': {
+        draft.countrySearchInput = action.payload.countrySearchInput;
+        break;
+      }
+      case '@application/SET_CITY_INPUT': {
+        draft.citySearchInput = action.payload.citySearchInput;
         break;
       }
       case '@application/WORLD_REQUEST': {

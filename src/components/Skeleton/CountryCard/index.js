@@ -7,8 +7,8 @@ function SkeletonCountryCard() {
   return (
     <Container>
       <Skeleton variant="circle" />
-      <Skeleton variant="rect" width={300} height={100} />
-      <Skeleton variant="rect" width={300} height={100} />
+      <Skeleton variant="rect" width={200} height={100} />
+      <Skeleton variant="rect" width={200} height={100} />
     </Container>
   );
 }

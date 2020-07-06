@@ -34,13 +34,3 @@ export const Middle = styled.div`
     margin-top: 15px;
   }
 `;
-
-export const MiddleFirst = styled.div``;
-
-export const MiddleSecond = styled.div``;
-
-export const MiddleThird = styled.div``;
-
-export const MiddleFourth = styled.div``;
-
-export const MiddleFifth = styled.div``;

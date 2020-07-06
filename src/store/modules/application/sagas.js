@@ -3,6 +3,8 @@ import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { toast } from 'react-toastify';
 
+import formatDate from '~/util/formatDate';
+
 import {
   getCountryInfoSuccess,
   getWorldInfoSuccess,
@@ -18,19 +20,8 @@ export function* getCountry({ payload }) {
     const response = yield call(api.get, `/api/report/v1/${name}`);
     /** */
 
-    /** Formatting Date */
-    const formattedDate = format(
-      parseISO(response.data.data.updated_at),
-      'dd/MM/yyyy HH:mm',
-      {
-        locale: ptBR,
-      }
-    );
-    /** */
-
     const country = {
       ...response.data.data,
-      formatted_updated_at: formattedDate,
     };
 
     yield put(getCountryInfoSuccess(country));
@@ -54,20 +45,10 @@ export function* getBrazil() {
     const response = yield call(api.get, '/api/report/v1');
     /** */
 
-    /** Formatting Date */
-    const formattedDate = format(
-      parseISO(response.data.data[0].datetime),
-      'dd/MM/yyyy HH:mm',
-      {
-        locale: ptBR,
-      }
-    );
-    /** */
-
     yield put(
       getBrazilInfoSuccess({
         brazil: response.data.data,
-        states_date: formattedDate,
+        states_date: formatDate(response.data.data[0].datetime, true),
       })
     );
   } catch (err) {

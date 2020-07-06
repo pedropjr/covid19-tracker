@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: ${(props) => props.loading && 'center'};
+  position: relative;
   padding: 50px 200px;
   margin-top: 135px;
 
