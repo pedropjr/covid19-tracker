@@ -3,7 +3,7 @@ import React from 'react';
 
 import formatDate from '~/util/formatDate';
 
-import sp from '~/assets/SP.png';
+// import sp from '~/assets/SP.png';
 
 import { Container, Top, Middle } from './styles';
 
