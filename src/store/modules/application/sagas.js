@@ -1,17 +1,16 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
-import { format, parseISO } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
 import { toast } from 'react-toastify';
 
 import formatDate from '~/util/formatDate';
+import api from '~/services/api';
+import secondaryApi from '~/services/secondaryApi';
 
 import {
   getCountryInfoSuccess,
   getWorldInfoSuccess,
   getBrazilInfoSuccess,
+  getCitySuccess,
 } from './actions';
-
-import api from '~/services/api';
 
 export function* getCountry({ payload }) {
   try {
@@ -56,8 +55,30 @@ export function* getBrazil() {
   }
 }
 
+export function* getCity({ payload }) {
+  try {
+    const { citySearchInput } = payload;
+    const response = yield call(secondaryApi.get, '', {
+      params: {
+        search: citySearchInput,
+        is_last: 'True',
+        place_type: 'city',
+      },
+    });
+
+    if (response && response.data.count === 0) {
+      toast.error('Por favor, digite o nome correto do município!');
+    } else {
+      yield put(getCitySuccess(response.data.results));
+    }
+  } catch (err) {
+    toast.error('Erro ao buscar cidade, tente novamente em alguns instantes!');
+  }
+}
+
 export default all([
   takeLatest('@application/COUNTRY_REQUEST', getCountry),
   takeLatest('@application/WORLD_REQUEST', getWorld),
   takeLatest('@application/BRAZIL_REQUEST', getBrazil),
+  takeLatest('@application/CITY_REQUEST', getCity),
 ]);

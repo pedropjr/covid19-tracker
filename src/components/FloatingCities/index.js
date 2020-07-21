@@ -1,36 +1,15 @@
-/* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import getCities from '~/queries/getCities';
-import Input from '~/components/Input';
-import { setCitySearchInput } from '~/store/modules/application/actions';
+import InputV2 from '~/components/InputV2';
+import CityCard from '~/components/CityCard';
+import SkeletonCityCard from '~/components/Skeleton/CityCard';
 
 import { Container, CustomCloseCircle } from './styles';
-import CityCard from '~/components/CityCard';
 
 function FloatingCities({ isShowing, setIsShowing }) {
-  const dispatch = useDispatch();
-  const [cities, setCities] = useState(undefined);
-  const { citySearchInput } = useSelector((state) => state.application);
-
-  useEffect(() => {
-    async function handleSearchCity() {
-      const response = await getCities(citySearchInput);
-
-      if (response) {
-        setCities(response.data.results);
-      }
-    }
-
-    if (citySearchInput !== '') {
-      handleSearchCity();
-    }
-
-    return () => {
-      dispatch(setCitySearchInput(''));
-    };
-  }, [citySearchInput, dispatch]);
+  const { cities, cityLoading } = useSelector((state) => state.application);
 
   return (
     <Container isShowing={isShowing}>
@@ -38,11 +17,8 @@ function FloatingCities({ isShowing, setIsShowing }) {
         <CustomCloseCircle onClick={() => setIsShowing(false)} />
       </div>
 
-      <Input
-        placeholder="Digite o nome de um município"
-        debounceTimeout={1000}
-      />
-
+      <InputV2 placeholder="Digite o nome de um município" />
+      {cityLoading && <SkeletonCityCard />}
       {cities &&
         cities.map((city) => (
           <CityCard key={city.city_ibge_code} city={city} />
@@ -52,3 +28,13 @@ function FloatingCities({ isShowing, setIsShowing }) {
 }
 
 export default FloatingCities;
+
+/** Prop Types */
+FloatingCities.propTypes = {
+  isShowing: PropTypes.bool,
+  setIsShowing: PropTypes.func.isRequired,
+};
+
+FloatingCities.defaultProps = {
+  isShowing: undefined,
+};

@@ -1,42 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import Input from '~/components/Input';
-import getCities from '~/queries/getCities';
-import { setCitySearchInput } from '~/store/modules/application/actions';
+import InputV2 from '~/components/InputV2';
 
 import { Container } from './styles';
 import CityCard from '~/components/CityCard';
+import SkeletonCityCard from '~/components/Skeleton/CityCard';
 
 function Cities() {
-  const dispatch = useDispatch();
-  const [cities, setCities] = useState(undefined);
-  const { citySearchInput } = useSelector((state) => state.application);
-
-  useEffect(() => {
-    async function handleSearchCity() {
-      const response = await getCities(citySearchInput);
-
-      if (response) {
-        setCities(response.data.results);
-      }
-    }
-
-    if (citySearchInput !== '') {
-      handleSearchCity();
-    }
-
-    return () => {
-      dispatch(setCitySearchInput(''));
-    };
-  }, [citySearchInput, dispatch]);
+  const { cities, cityLoading } = useSelector((state) => state.application);
 
   return (
     <Container>
-      <Input
-        placeholder="Digite o nome de um município"
-        debounceTimeout={1000}
-      />
+      <InputV2 placeholder="Digite o nome de um município" />
+      {cityLoading && <SkeletonCityCard />}
       {cities &&
         cities.map((city) => (
           <CityCard key={city.city_ibge_code} city={city} />

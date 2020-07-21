@@ -51,3 +51,17 @@ export function setCitySearchInput(citySearchInput) {
     payload: { citySearchInput },
   };
 }
+
+export function getCityRequest(citySearchInput) {
+  return {
+    type: '@application/CITY_REQUEST',
+    payload: { citySearchInput },
+  };
+}
+
+export function getCitySuccess(data) {
+  return {
+    type: '@application/CITY_SUCCESS',
+    payload: { data },
+  };
+}

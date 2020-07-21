@@ -5,10 +5,12 @@ const INITIAL_STATE = {
   country: [],
   brazil: [],
   world: [],
+  cities: null,
   states_date: '',
   loading: 0,
+  cityLoading: false,
   countrySearchInput: '',
-  citySearchInput: '',
+  // citySearchInput: '',
 };
 
 export default function application(state = INITIAL_STATE, action) {
@@ -37,10 +39,12 @@ export default function application(state = INITIAL_STATE, action) {
         draft.countrySearchInput = action.payload.countrySearchInput;
         break;
       }
+      /**
       case '@application/SET_CITY_INPUT': {
         draft.citySearchInput = action.payload.citySearchInput;
+        draft.cityLoading = 1;
         break;
-      }
+      } */
       case '@application/WORLD_REQUEST': {
         draft.loading = 1;
         break;
@@ -48,6 +52,16 @@ export default function application(state = INITIAL_STATE, action) {
       case '@application/WORLD_SUCCESS': {
         draft.world = action.payload.data;
         draft.loading = 0;
+        break;
+      }
+      case '@application/CITY_REQUEST': {
+        draft.cityLoading = true;
+        draft.cities = null;
+        break;
+      }
+      case '@application/CITY_SUCCESS': {
+        draft.cities = action.payload.data;
+        draft.cityLoading = false;
         break;
       }
       default:
