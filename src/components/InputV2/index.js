@@ -21,7 +21,16 @@ function InputV2({ placeholder }) {
 
   return (
     <Container>
-      <input type="text" placeholder={placeholder} onChange={handleInput} />
+      <input
+        type="text"
+        placeholder={placeholder}
+        onChange={handleInput}
+        onKeyPress={(event) => {
+          if (event.key === 'Enter') {
+            handleSearch();
+          }
+        }}
+      />
 
       <MdSearch size={30} color="#fff" onClick={handleSearch} />
     </Container>

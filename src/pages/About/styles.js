@@ -3,19 +3,16 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 100px;
-  color: #fff;
   font-size: 2.4rem;
   margin-top: 135px;
 
   a {
     text-decoration-style: none;
     color: #4ffa7b;
+    text-align: justify;
   }
 
   @media only screen and (max-width: 480px) {
-    padding: 50px 0;
     margin-top: 75px;
   }
 `;
@@ -26,17 +23,15 @@ export const AboutContainer = styled.div`
   justify-content: space-evenly;
   background: #4d4d4d;
   border-radius: 4px;
-  height: 300px;
-  width: 350px;
+  height: 400px;
+  width: 100%;
+  max-width: 550px;
   padding: 0 20px;
 `;
 
 export const Message = styled.span`
   text-align: justify;
-`;
-
-export const Thank = styled.span`
-  text-align: justify;
+  color: #fff;
 `;
 
 export const API = styled.div`
